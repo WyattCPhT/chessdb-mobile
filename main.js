@@ -1,8 +1,6 @@
 $(() => {
     const $board = $("#board");
     const $eval = $("#eval");
-    const $lichess = $("#lichess");
-    const $masters = $("#masters");
     const $moveList = $("#move-list");
     const $pgn = $("#pgn");
     const $goback = $("#go-back");
