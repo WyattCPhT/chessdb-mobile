@@ -1,6 +1,8 @@
 $(() => {
     const $board = $("#board");
     const $eval = $("#eval");
+    const $lichess = $("#lichess");
+    const $masters = $("#masters");
     const $moveList = $("#move-list");
     const $pgn = $("#pgn");
     const $goback = $("#go-back");
@@ -86,10 +88,10 @@ $(() => {
 
             let explorerInfo;
             if(!$masters.is(":checked"))
-                explorerInfo = await fetch(``)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/masters?fen=${encodeURIComponent(game.fen())}`)
                 .then(response => response.json());
             else
-                explorerInfo = await fetch(``)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}`)
                 .then(response => response.json());
 
             let white = explorerInfo.white;
