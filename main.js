@@ -126,36 +126,6 @@ $(() => {
             $queryInfo.text("");
 
             sortedQueryInfo = queryInfo.map(obj => ({ ...obj }));
-    sortedQueryInfo.sort((a, b) => {
-        let aComparisonValue;
-        let bComparisonValue;
-    switch (game.turn() === "w" ? $whiteSortOptions.val() : $blackSortOptions.val()) {
-        case "accuracy":
-            aComparisonValue = a.score;
-            bComparisonValue = b.score;
-            break;
-        case "popularity":
-            aComparisonValue = a.total;
-            bComparisonValue = b.total;
-            break;
-        case "winrate":
-            aComparisonValue = a.winrate;
-            bComparisonValue = b.winrate;
-            break;
-    }
-    if (isNaN(aComparisonValue) && isNaN(bComparisonValue)) return 1;
-    if (isNaN(aComparisonValue)) return 1;
-    if (isNaN(bComparisonValue)) return -1;
-    if (aComparisonValue === bComparisonValue) {
-        if (a.total === b.total) {
-            return queryInfo.indexOf(a) - queryInfo.indexOf(b); // Preserve original order from ChessDB
-        } else {
-            return b.total - a.total; // Sort by total positions
-        }
-    }
-    if (game.turn() === "b" && $blackSortOptions.val() === "winrate") return aComparisonValue - bComparisonValue;
-    return bComparisonValue - aComparisonValue;
-});
 
             for (let i = 0; i < sortedQueryInfo.length; i++) {
                 if (sortedQueryInfo[i].moveSan === undefined) continue;
