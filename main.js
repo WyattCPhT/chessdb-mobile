@@ -91,7 +91,7 @@ $(() => {
                 explorerInfo = await fetch(`https://explorer.lichess.ovh/masters?fen=${encodeURIComponent(game.fen())}`)
                 .then(response => response.json());
             else
-                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}&ratings=400,1000`)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}&speeds=bullet`)
                 .then(response => response.json());
 
             let white = explorerInfo.white;
